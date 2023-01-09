@@ -1,4 +1,4 @@
-import { Answers, CheckboxChoiceOptions, ExpandChoiceOptions, ListChoiceOptions } from '../../index.js';
+import { Answers, CheckboxChoiceOptions, RadioChoiceOptions, ExpandChoiceOptions, ListChoiceOptions } from '../../index.js';
 
 /**
  * Represents a choice for several question-types.
@@ -7,7 +7,7 @@ import { Answers, CheckboxChoiceOptions, ExpandChoiceOptions, ListChoiceOptions 
  * The type of the answers.
  */
 declare class Choice<T extends Answers = Answers>
-    implements ListChoiceOptions<T>, CheckboxChoiceOptions<T>, ExpandChoiceOptions {
+    implements ListChoiceOptions<T>, CheckboxChoiceOptions<T>, RadioChoiceOptions<T>, ExpandChoiceOptions {
     /**
      * @inheritdoc
      */

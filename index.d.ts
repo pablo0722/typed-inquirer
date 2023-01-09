@@ -20,6 +20,7 @@ import Choices from './lib/objects/choices.js';
 import Separator from './lib/objects/separator.js';
 import './lib/prompts/base.js';
 import CheckboxPrompt from './lib/prompts/checkbox.js';
+import RadioPrompt from './lib/prompts/radio.js';
 import ConfirmPrompt from './lib/prompts/confirm.js';
 import EditorPrompt from './lib/prompts/editor.js';
 import ExpandPrompt from './lib/prompts/expand.js';
@@ -224,6 +225,19 @@ export interface CheckboxChoiceOptions<T extends Answers = Answers> extends List
 }
 
 /**
+ * Provides options for a choice of the {@link RadioPrompt `RadioPrompt<TQuestion>`}.
+ *
+ * @template T
+ * The type of the answers.
+ */
+export interface RadioChoiceOptions<T extends Answers = Answers> extends ListChoiceOptions<T> {
+    /**
+     * A value indicating whether the choice should be initially checked.
+     */
+    checked?: boolean | undefined;
+}
+
+/**
  * Provides options for a choice of the {@link ExpandPrompt `ExpandPrompt<TQuestion>`}.
  */
 export interface ExpandChoiceOptions extends ChoiceOptions {
@@ -312,6 +326,16 @@ export interface CheckboxChoiceMap<T extends Answers = Answers> extends BaseChoi
 }
 
 /**
+ * Provides all valid choice-types for the {@link RadioQuestion `RadioQuestion<T>`}.
+ *
+ * @template T
+ * The type of the answers.
+ */
+export interface RadioChoiceMap<T extends Answers = Answers> extends BaseChoiceMap<T> {
+    RadioChoiceOptions: RadioChoiceOptions<T>;
+}
+
+/**
  * Provides all valid choice-types for the {@link ExpandQuestion `ExpandQuestion<T>`}.
  *
  * @template T
@@ -331,6 +355,7 @@ export interface AllChoiceMap<T extends Answers = Answers> {
     BaseChoiceMap: BaseChoiceMap<T>[keyof BaseChoiceMap<T>];
     ListChoiceMap: ListChoiceMap<T>[keyof ListChoiceMap<T>];
     CheckboxChoiceMap: CheckboxChoiceMap<T>[keyof CheckboxChoiceMap<T>];
+    RadioChoiceMap: RadioChoiceMap<T>[keyof RadioChoiceMap<T>];
     ExpandChoiceMap: ExpandChoiceMap<T>[keyof ExpandChoiceMap<T>];
 }
 
@@ -627,6 +652,28 @@ export interface CheckboxQuestion<T extends Answers = Answers> extends CheckboxQ
 }
 
 /**
+ * Provides options for a question for the {@link RadioPrompt `RadioPrompt<TQuestion>`}.
+ *
+ * @template T
+ * The type of the answers.
+ */
+export interface RadioQuestionOptions<T extends Answers = Answers>
+    extends LoopableListQuestionOptionsBase<T, RadioChoiceMap<T>> { }
+
+/**
+ * Provides options for a question for the {@link RadioPrompt `RadioPrompt<TQuestion>`}.
+ *
+ * @template T
+ * The type of the answers.
+ */
+export interface RadioQuestion<T extends Answers = Answers> extends RadioQuestionOptions<T> {
+    /**
+     * @inheritdoc
+     */
+    type: 'radio';
+}
+
+/**
  * Provides options for a question for the {@link ConfirmPrompt `ConfirmPrompt<TQuestion>`}.
  *
  * @template T
@@ -716,6 +763,11 @@ export interface QuestionMap<T extends Answers = Answers> {
      * The {@link CheckboxQuestion `CheckboxQuestion<T>`} type.
      */
     checkbox: CheckboxQuestion<T>;
+
+    /**
+     * The {@link RadioQuestion `RadioQuestion<T>`} type.
+     */
+    radio: RadioQuestion<T>;
 
     /**
      * The {@link ConfirmQuestion `ConfirmQuestion<T>`} type.
