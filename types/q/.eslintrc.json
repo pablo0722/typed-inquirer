@@ -1,7 +1,0 @@
-{
-    "rules": {
-        "no-any-union": "off",
-        "prefer-declare-function": "off",
-        "no-unnecessary-generics": "off"
-    }
-}
