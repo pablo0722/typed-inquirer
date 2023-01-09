@@ -1,0 +1,9 @@
+{
+    "extends": "@definitelytyped/dtslint/dt.json",
+    "rules": {
+        "arrow-return-shorthand": false,
+        "no-empty-interface": false,
+        "semicolon": false,
+        "strict-export-declare-modifiers": false
+    }
+}
