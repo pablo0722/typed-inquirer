@@ -1108,7 +1108,7 @@ declare namespace inquirer {
              * @returns
              * The answer to the question.
              */
-            protected fetchAnswer(
+            public fetchAnswer(
                 question: FetchedQuestion<T>,
             ): Observable<FetchedAnswer>;
 
@@ -1258,6 +1258,10 @@ declare namespace inquirer {
      * The default prompt-module.
      */
     let prompt: PromptModule;
+
+    const cancelString: string;
+
+    function setCreateCallback<T extends Prompt>(cb: ((p: T) => void) | null): void;
 }
 
 export default inquirer;
