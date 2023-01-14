@@ -15,6 +15,9 @@ type Question = RadioQuestionOptions;
  * The options for the question.
  */
 declare class RadioPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+    public getSelected(): string;
+    public update(values: string[]): void;
+
     /**
      * Gets or sets the index of the currently focused choice.
      */

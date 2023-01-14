@@ -855,6 +855,17 @@ export interface PromptModule extends PromptModuleBase {
  * Provides the functionality to prompt questions.
  */
 declare namespace inquirer {
+    type CheckboxPrompt = CheckboxPrompt;
+    type RadioPrompt    = RadioPrompt;
+    type ConfirmPrompt  = ConfirmPrompt;
+    type EditorPrompt   = EditorPrompt;
+    type ExpandPrompt   = ExpandPrompt;
+    type InputPrompt    = InputPrompt;
+    type ListPrompt     = ListPrompt;
+    type NumberPrompt   = NumberPrompt;
+    type PasswordPrompt = PasswordPrompt;
+    type RawListPrompt  = RawListPrompt;
+
     /**
      * Provides components for the prompts.
      */
